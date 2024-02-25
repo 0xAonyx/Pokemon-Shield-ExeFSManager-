@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
     consoleInit(NULL);
     const char* state;
     bool enabled = false;
-    printf("ExeFS Manager - Pokemon Sword (By Aonyx)\n");
+    printf("ExeFS Manager - Pokemon Shield v1.01 (By Aonyx)\n");
     //printf("Please reach out on discord (aonyx2) with any questions!\n")
     //otter ascii
     printf("\n");
@@ -38,11 +38,11 @@ int main(int argc, char **argv) {
     printf("\n");
     
     //check if it is enabled
-    if(fileExists("/atmosphere/contents/01008DB008C2C000")) {
+    if(fileExists("/atmosphere/contents/01008DB008C2C000/exefs")) {
             state = "ENABLED";
             enabled = true;
             printf("ExeFS are currently: \033[32m%s\033[0m\n", state);
-        } else if (fileExists("/atmosphere/contents/Shield_ExeFSMods_Disabled")) {
+        } else if (fileExists("/atmosphere/contents/01008DB008C2C000/inactive_exefs")) {
             state = "DISABLED";
             enabled = false;
             printf("ExeFS are currently: \033[31m%s\033[0m\n", state);
@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
         padUpdate(&pad);
         u64 kDown = padGetButtonsDown(&pad);
         if((kDown & HidNpadButton_A) && !enabled) {
-            if(!Rename("/atmosphere/contents/Shield_ExeFSMods_Disabled", "/atmosphere/contents/01008DB008C2C000")) {
+            if(!Rename("/atmosphere/contents/01008DB008C2C000/inactive_exefs", "/atmosphere/contents/01008DB008C2C000/exefs")) {
                 printf("Error enabling ExeFS Mods.\n");
             } else {
                 printf("ExeFS Mods Enabled.\n");
@@ -71,7 +71,7 @@ int main(int argc, char **argv) {
             }
         }
         if((kDown & HidNpadButton_B) && enabled) {
-            if(!Rename("/atmosphere/contents/01008DB008C2C000", "/atmosphere/contents/Shield_ExeFSMods_Disabled")) {
+            if(!Rename("/atmosphere/contents/01008DB008C2C000/exefs", "/atmosphere/contents/01008DB008C2C000/inactive_exefs")) {
                 printf("Error disabling ExeFS Mods.\n");
             } else {
                 printf("ExeFS Mods Disabled.\n");

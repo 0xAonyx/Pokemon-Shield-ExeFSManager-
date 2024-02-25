@@ -32,7 +32,7 @@ include $(DEVKITPRO)/libnx/switch_rules
 #---------------------------------------------------------------------------------
 APP_TITLE := ExeFS Manager!
 APP_AUTHOR := Aonyx
-APP_VERSION := 1.0
+APP_VERSION := 1.01
 APP_TITLEID := 0104020706000112
 ICON := icon.jpg
 
